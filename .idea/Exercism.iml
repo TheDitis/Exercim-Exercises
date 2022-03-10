@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="WEB_MODULE" version="4">
+  <component name="NewModuleRootManager">
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/rust/armstrong-numbers/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/rust/armstrong-numbers/tests" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/rust/clock/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/rust/clock/tests" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/rust/grains/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/rust/grains/tests" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/rust/matching-brackets/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/rust/matching-brackets/tests" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/rust/prime-factors/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/rust/prime-factors/tests" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/rust/sublist/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/rust/sublist/tests" isTestSource="true" />
+      <excludeFolder url="file://$MODULE_DIR$/temp" />
+      <excludeFolder url="file://$MODULE_DIR$/.tmp" />
+      <excludeFolder url="file://$MODULE_DIR$/tmp" />
+      <excludeFolder url="file://$MODULE_DIR$/rust/sublist/target" />
+      <excludeFolder url="file://$MODULE_DIR$/rust/armstrong-numbers/target" />
+      <excludeFolder url="file://$MODULE_DIR$/rust/matching-brackets/target" />
+      <excludeFolder url="file://$MODULE_DIR$/rust/grains/target" />
+      <excludeFolder url="file://$MODULE_DIR$/rust/prime-factors/target" />
+      <excludeFolder url="file://$MODULE_DIR$/rust/clock/target" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>
