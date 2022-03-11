@@ -6,6 +6,8 @@
       <sourceFolder url="file://$MODULE_DIR$/rust/armstrong-numbers/tests" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/rust/clock/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/rust/clock/tests" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/rust/difference-of-squares/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/rust/difference-of-squares/tests" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/rust/grains/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/rust/grains/tests" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/rust/high-scores/src" isTestSource="false" />
@@ -32,6 +34,7 @@
       <excludeFolder url="file://$MODULE_DIR$/rust/luhn/target" />
       <excludeFolder url="file://$MODULE_DIR$/rust/luhn-from/target" />
       <excludeFolder url="file://$MODULE_DIR$/rust/high-scores/target" />
+      <excludeFolder url="file://$MODULE_DIR$/rust/difference-of-squares/target" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
