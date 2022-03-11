@@ -16,6 +16,8 @@
       <sourceFolder url="file://$MODULE_DIR$/rust/luhn-from/tests" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/rust/luhn/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/rust/luhn/tests" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/rust/macros/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/rust/macros/tests" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/rust/matching-brackets/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/rust/matching-brackets/tests" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/rust/prime-factors/src" isTestSource="false" />
@@ -35,6 +37,7 @@
       <excludeFolder url="file://$MODULE_DIR$/rust/luhn-from/target" />
       <excludeFolder url="file://$MODULE_DIR$/rust/high-scores/target" />
       <excludeFolder url="file://$MODULE_DIR$/rust/difference-of-squares/target" />
+      <excludeFolder url="file://$MODULE_DIR$/rust/macros/target" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
