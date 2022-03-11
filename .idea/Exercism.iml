@@ -8,6 +8,10 @@
       <sourceFolder url="file://$MODULE_DIR$/rust/clock/tests" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/rust/grains/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/rust/grains/tests" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/rust/high-scores/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/rust/high-scores/tests" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/rust/luhn-from/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/rust/luhn-from/tests" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/rust/luhn/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/rust/luhn/tests" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/rust/matching-brackets/src" isTestSource="false" />
@@ -26,6 +30,8 @@
       <excludeFolder url="file://$MODULE_DIR$/rust/prime-factors/target" />
       <excludeFolder url="file://$MODULE_DIR$/rust/clock/target" />
       <excludeFolder url="file://$MODULE_DIR$/rust/luhn/target" />
+      <excludeFolder url="file://$MODULE_DIR$/rust/luhn-from/target" />
+      <excludeFolder url="file://$MODULE_DIR$/rust/high-scores/target" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
