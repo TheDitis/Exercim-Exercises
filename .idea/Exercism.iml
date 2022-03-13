@@ -30,6 +30,8 @@
       <sourceFolder url="file://$MODULE_DIR$/rust/prime-factors/tests" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/rust/proverb/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/rust/proverb/tests" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/rust/raindrops/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/rust/raindrops/tests" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/rust/sublist/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/rust/sublist/tests" isTestSource="true" />
       <excludeFolder url="file://$MODULE_DIR$/temp" />
@@ -50,6 +52,7 @@
       <excludeFolder url="file://$MODULE_DIR$/rust/diffie-hellman/target" />
       <excludeFolder url="file://$MODULE_DIR$/rust/acronym/target" />
       <excludeFolder url="file://$MODULE_DIR$/rust/proverb/target" />
+      <excludeFolder url="file://$MODULE_DIR$/rust/raindrops/target" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
