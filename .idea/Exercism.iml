@@ -2,6 +2,8 @@
 <module type="WEB_MODULE" version="4">
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/rust/acronym/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/rust/acronym/tests" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/rust/armstrong-numbers/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/rust/armstrong-numbers/tests" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/rust/bob/src" isTestSource="false" />
@@ -26,6 +28,8 @@
       <sourceFolder url="file://$MODULE_DIR$/rust/matching-brackets/tests" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/rust/prime-factors/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/rust/prime-factors/tests" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/rust/proverb/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/rust/proverb/tests" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/rust/sublist/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/rust/sublist/tests" isTestSource="true" />
       <excludeFolder url="file://$MODULE_DIR$/temp" />
@@ -44,6 +48,8 @@
       <excludeFolder url="file://$MODULE_DIR$/rust/macros/target" />
       <excludeFolder url="file://$MODULE_DIR$/rust/bob/target" />
       <excludeFolder url="file://$MODULE_DIR$/rust/diffie-hellman/target" />
+      <excludeFolder url="file://$MODULE_DIR$/rust/acronym/target" />
+      <excludeFolder url="file://$MODULE_DIR$/rust/proverb/target" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
