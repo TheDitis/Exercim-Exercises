@@ -10,6 +10,8 @@
       <sourceFolder url="file://$MODULE_DIR$/rust/bob/tests" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/rust/clock/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/rust/clock/tests" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/rust/custom-set/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/rust/custom-set/tests" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/rust/difference-of-squares/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/rust/difference-of-squares/tests" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/rust/diffie-hellman/src" isTestSource="false" />
@@ -32,6 +34,8 @@
       <sourceFolder url="file://$MODULE_DIR$/rust/proverb/tests" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/rust/raindrops/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/rust/raindrops/tests" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/rust/series/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/rust/series/tests" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/rust/sublist/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/rust/sublist/tests" isTestSource="true" />
       <excludeFolder url="file://$MODULE_DIR$/temp" />
@@ -53,6 +57,8 @@
       <excludeFolder url="file://$MODULE_DIR$/rust/acronym/target" />
       <excludeFolder url="file://$MODULE_DIR$/rust/proverb/target" />
       <excludeFolder url="file://$MODULE_DIR$/rust/raindrops/target" />
+      <excludeFolder url="file://$MODULE_DIR$/rust/series/target" />
+      <excludeFolder url="file://$MODULE_DIR$/rust/custom-set/target" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
