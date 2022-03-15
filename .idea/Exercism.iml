@@ -18,6 +18,8 @@
       <sourceFolder url="file://$MODULE_DIR$/rust/diffie-hellman/tests" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/rust/grains/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/rust/grains/tests" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/rust/hamming/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/rust/hamming/tests" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/rust/high-scores/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/rust/high-scores/tests" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/rust/luhn-from/src" isTestSource="false" />
@@ -28,6 +30,9 @@
       <sourceFolder url="file://$MODULE_DIR$/rust/macros/tests" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/rust/matching-brackets/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/rust/matching-brackets/tests" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/rust/parallel-letter-frequency/benches" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/rust/parallel-letter-frequency/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/rust/parallel-letter-frequency/tests" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/rust/prime-factors/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/rust/prime-factors/tests" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/rust/proverb/src" isTestSource="false" />
@@ -59,6 +64,8 @@
       <excludeFolder url="file://$MODULE_DIR$/rust/raindrops/target" />
       <excludeFolder url="file://$MODULE_DIR$/rust/series/target" />
       <excludeFolder url="file://$MODULE_DIR$/rust/custom-set/target" />
+      <excludeFolder url="file://$MODULE_DIR$/rust/parallel-letter-frequency/target" />
+      <excludeFolder url="file://$MODULE_DIR$/rust/hamming/target" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
