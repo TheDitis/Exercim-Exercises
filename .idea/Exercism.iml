@@ -41,6 +41,8 @@
       <sourceFolder url="file://$MODULE_DIR$/rust/raindrops/tests" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/rust/series/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/rust/series/tests" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/rust/simple-linked-list/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/rust/simple-linked-list/tests" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/rust/sublist/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/rust/sublist/tests" isTestSource="true" />
       <excludeFolder url="file://$MODULE_DIR$/temp" />
@@ -66,6 +68,7 @@
       <excludeFolder url="file://$MODULE_DIR$/rust/custom-set/target" />
       <excludeFolder url="file://$MODULE_DIR$/rust/parallel-letter-frequency/target" />
       <excludeFolder url="file://$MODULE_DIR$/rust/hamming/target" />
+      <excludeFolder url="file://$MODULE_DIR$/rust/simple-linked-list/target" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
