@@ -1,8 +1,3 @@
-
-// const NOTES_SHARPS: [&str; 12] = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"];
-// const NOTES_FLATS:  [&str; 12] = ["C", "Db", "D", "Eb", "E", "F", "Gb", "G", "Ab", "A", "Bb", "B"];
-
-use std::io::stdout;
 use crate::ScaleInterval::{Augmented, HalfStep, WholeStep};
 use crate::ScaleModifier::{Flat, Sharp};
 
@@ -17,6 +12,8 @@ pub enum ScaleInterval {
 }
 
 impl ScaleInterval {
+    /// Given a string of interval representations ('m' = Halfstep, 'M' = WholeStep, 'A' = Augmented)
+    /// return a result containing a new Vec of ScaleIntervals representing those same steps
     fn intervals_from_str(arr: &str) -> Result<Vec<Self>, Error> {
         let mut output: Vec<Self> = Vec::new();
         for char in arr.chars() {
@@ -28,6 +25,7 @@ impl ScaleInterval {
         Ok(output)
     }
 
+    /// Given a character ('m', 'M', or 'A') get the corresponding ScaleInterval
     fn from(interval_string: char) ->  Result<Self, Error> {
         match interval_string {
             'm' => Ok(HalfStep),
@@ -53,13 +51,14 @@ pub enum ScaleModifier {
 ///  Note
 ///-------------------------------------------------------------------------------------------------
 #[derive(PartialEq, Clone, Copy, Debug)]
-pub enum Note<'a> {
-    White(&'a str),
-    Black((&'a str, &'a str)),
+pub enum Note {
+    White(&'static str),
+    Black((&'static str, &'static str)),
 }
 
-impl Note<'_> {
-    pub const ALL: [Note<'static>; 12] = [
+impl Note {
+    /// Chromatic scale starting from C as const
+    pub const ALL: [Note; 12] = [
         Note::White("C"),
         Note::Black(("C#", "Db")),
         Note::White("D"),
@@ -74,12 +73,14 @@ impl Note<'_> {
         Note::White("B")
     ];
 
-    pub fn interval_from(start_note: &Note, interval: &ScaleInterval) -> Note<'static> {
+    /// Get the note that ist 'interval' up from 'start_note'
+    pub fn interval_from(start_note: &Note, interval: &ScaleInterval) -> Note {
         let start_num = start_note.note_number() as usize;
         let interval = *interval as usize ;
         Self::ALL[(start_num + interval) % (Self::ALL.len() as usize)].clone()
     }
 
+    /// String representation of the note, given the desired modifier (Sharp of Flat)
     pub fn to_str(&self, modifier: &ScaleModifier) -> &str {
         match self {
             Note::White(note) => note,
@@ -92,6 +93,7 @@ impl Note<'_> {
         }
     }
 
+    /// Create a new note from a string representing that note, or None if 'note_str' is invalid
     pub fn from(note_str: &str) -> Result<Self, Error> {
         let note_str = Note::fix_case(note_str);
         for note in Self::ALL {
@@ -107,6 +109,7 @@ impl Note<'_> {
         Err(Error::InvalidNote)
     }
 
+    /// This note's number relative from C (0-11)
     pub fn note_number(&self) -> u8 {
         for (i, &n) in Self::ALL.iter().enumerate() {
             if n == *self {
@@ -116,6 +119,7 @@ impl Note<'_> {
         0
     }
 
+    /// Given a string representing a note, get a propperly capitalized version
     pub fn fix_case(note_str: &str)-> String {
         let mut c = note_str.chars();
         match c.next() {
@@ -140,67 +144,46 @@ pub enum Error {
 ///  Scale
 ///-------------------------------------------------------------------------------------------------
 #[derive(Debug)]
-pub struct Scale<'a> {
-    root: Note<'a>,
+pub struct Scale {
     modifier: ScaleModifier, // use Sharps or Flats?
-    intervals: Vec<ScaleInterval>,
-    notes: Vec<Note<'a>>,
+    notes: Vec<Note>,
 }
 
-impl Scale<'_> {
-    pub fn new<'a>(tonic: &'a str, intervals: &str) -> Result<Scale<'a>, Error> {
+impl Scale {
+    pub fn new(tonic: &str, intervals: &str) -> Result<Scale, Error> {
         let root_res = Note::from(tonic);
         let intervals_res = ScaleInterval::intervals_from_str(intervals);
         match (root_res, intervals_res) {
             (Ok(root), Ok(intervals)) => {
-                let modifier = Scale::determine_modifier(tonic).unwrap();
+                let modifier = Scale::determine_modifier(tonic);
                 let notes = Scale::create_note_arr(&root, &intervals);
-                Ok(Scale { root: root.clone(), modifier: modifier.clone(), intervals, notes: notes.to_owned() })
+                Ok(Scale { modifier: modifier.clone(), notes: notes.to_owned() })
             },
             (Ok(_), Err(e)) => Err(e),
             _ => Err(Error::InvalidNote),
         }
     }
 
+    /// Get the full octave chromatic scale starting from 'tonic'
     pub fn chromatic(tonic: &str) -> Result<Scale, Error> {
         Scale::new(tonic, "mmmmmmmmmmmm")
     }
 
+    /// Get all notes in this scale as a vec of their string representations
     pub fn enumerate(&self) -> Vec<String> {
         self.notes.iter().map(|n| n.to_str(&self.modifier).to_owned()).collect()
     }
 
-    fn determine_modifier(root: &str) -> Result<ScaleModifier, Error> {
-        match Note::from(root) {
-            Ok(root_note) => {
-                Ok(
-                    match root_note {
-                        Note::White(k) => {
-                            match k {
-                                "E" | "A" | "D" | "G" | "C" => ScaleModifier::Sharp,
-                                _ => ScaleModifier::Flat,
-                            }
-                        },
-                        Note::Black((sharp, flat)) => {
-                            if root.chars().nth(1).unwrap() == '#' { Sharp } else { Flat }
-                        }
-                    }
-                )
-            }
-            Err(e) => Err(e)
-
+    /// Given the root note string, determine whether the scale should use Sharp or Flat notes
+    fn determine_modifier(root: &str) -> ScaleModifier {
+        match root {
+            "C" | "G" | "D" | "A" | "E" | "B" | "F#" | "a" | "e"| "b"| "f#"| "c#"| "g#"| "d#" => Sharp,
+            _ => Flat,
         }
     }
 
-    pub fn as_str_arr(&self) -> Vec<&str> {
-        let mut output: Vec<&str> = Vec::new();
-        for note in &self.notes {
-            output.push(note.to_str(&self.modifier));
-        }
-        output
-    }
-
-    fn create_note_arr<'a>(root: &'a Note, intervals: &Vec<ScaleInterval>) -> Vec<Note<'a>> {
+    /// Given the root and a vec of intervals, create a corresponding vec of Note objects
+    fn create_note_arr(root: &Note, intervals: &Vec<ScaleInterval>) -> Vec<Note> {
         let mut output: Vec<Note> = vec![(*root).clone()];
         for interval in intervals {
             output.push(Note::interval_from(&output.last().unwrap(), &interval))
