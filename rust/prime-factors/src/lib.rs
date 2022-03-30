@@ -1,13 +1,13 @@
-const PRIME_DIVISORS: [u64; 5] = [2, 3, 5, 7, 11];
 
 pub fn factors(num: u64) -> Vec<u64> {
     let mut divisors: Vec<u64> = Vec::new();
     let mut n = num;
     while n > 1 {
-        for div in PRIME_DIVISORS {
-            if n % div == 0 {
-                divisors.push(div);
-                n /= div;
+        for i in 2..=num {
+            if !is_prime(i) { continue; }
+            if n % i == 0 {
+                divisors.push(i);
+                n /= i;
                 break;
             }
         }
