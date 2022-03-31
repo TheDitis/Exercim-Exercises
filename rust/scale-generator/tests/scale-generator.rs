@@ -4,13 +4,21 @@ mod tests {
     mod note_tests {
 
 
-        use scale_generator::{Note, ScaleInterval, ScaleModifier};
+        use scale_generator::{Error, Note, ScaleInterval, ScaleModifier};
 
         #[test]
         fn halfstep_from_c_is_db() {
             let c = Note::try_from("C").unwrap();
             let db = Note::interval_from(&c, &ScaleInterval::HalfStep);
             assert_eq!(db.to_str(&ScaleModifier::Flat), "Db");
+        }
+
+        #[test]
+        fn str_parse_works() {
+            let csharp: Note = "C#".parse().unwrap();
+            assert_eq!(csharp, Note::Black(("C#", "Db")));
+            let invalid: Result<Note, Error> = "CC".parse();
+            assert_eq!(invalid, Err(Error::InvalidNote));
         }
 
         #[test]

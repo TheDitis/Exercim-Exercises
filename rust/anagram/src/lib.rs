@@ -14,8 +14,8 @@ pub fn anagrams_for<'a>(word: &str, possible_anagrams: &[&'a str]) -> HashSet<&'
 }
 
 
-fn sort_string(s: &String) -> String {
-    let mut sorted = s.clone().chars().collect::<Vec<char>>();
+fn sort_string(s: &str) -> String {
+    let mut sorted = s.to_string().chars().collect::<Vec<char>>();
     sorted.sort_unstable();
     sorted.iter().collect()
 }

@@ -1,3 +1,4 @@
+use std::str::FromStr;
 use crate::ScaleInterval::{Augmented, HalfStep, WholeStep};
 use crate::ScaleModifier::{Flat, Sharp};
 
@@ -129,11 +130,17 @@ impl TryFrom<&str> for Note {
     }
 }
 
+impl FromStr for Note {
+    type Err = Error;
+    fn from_str(s: &str) -> Result<Self, Self::Err> { Note::try_from(s) }
+}
+
+
 ///-------------------------------------------------------------------------------------------------
 ///  Error
 ///-------------------------------------------------------------------------------------------------
 
-#[derive(Debug)]
+#[derive(Debug, PartialEq)]
 pub enum Error {
     InvalidNote,
     InvalidInterval,
