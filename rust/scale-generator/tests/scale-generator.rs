@@ -8,14 +8,14 @@ mod tests {
 
         #[test]
         fn halfstep_from_c_is_db() {
-            let c = Note::from("C").unwrap();
+            let c = Note::try_from("C").unwrap();
             let db = Note::interval_from(&c, &ScaleInterval::HalfStep);
             assert_eq!(db.to_str(&ScaleModifier::Flat), "Db");
         }
 
         #[test]
         fn augmented_wholestep_from_bb_is_db() {
-            let bb = Note::from("Bb").unwrap();
+            let bb = Note::try_from("Bb").unwrap();
             let db = Note::interval_from(&bb, &ScaleInterval::Augmented);
             assert_eq!(db.to_str(&ScaleModifier::Flat), "Db");
         }

@@ -15,18 +15,14 @@ impl ScaleInterval {
     /// Given a string of interval representations ('m' = Halfstep, 'M' = WholeStep, 'A' = Augmented)
     /// return a result containing a new Vec of ScaleIntervals representing those same steps
     fn intervals_from_str(arr: &str) -> Result<Vec<Self>, Error> {
-        let mut output: Vec<Self> = Vec::new();
-        for char in arr.chars() {
-            match ScaleInterval::from(char) {
-                Ok(interval) => { output.push(interval); },
-                Err(e) => { return Err(e) }
-            }
-        }
-        Ok(output)
+        arr.chars().map(ScaleInterval::try_from).collect()
     }
+}
 
+impl TryFrom<char> for ScaleInterval {
+    type Error = Error;
     /// Given a character ('m', 'M', or 'A') get the corresponding ScaleInterval
-    fn from(interval_string: char) ->  Result<Self, Error> {
+    fn try_from(interval_string: char) ->  Result<Self, Self::Error> {
         match interval_string {
             'm' => Ok(HalfStep),
             'M' => Ok(WholeStep),
@@ -77,7 +73,7 @@ impl Note {
     pub fn interval_from(start_note: &Note, interval: &ScaleInterval) -> Note {
         let start_num = start_note.note_number() as usize;
         let interval = *interval as usize ;
-        Self::ALL[(start_num + interval) % (Self::ALL.len() as usize)].clone()
+        Self::ALL[(start_num + interval) % (Self::ALL.len() as usize)]
     }
 
     /// String representation of the note, given the desired modifier (Sharp of Flat)
@@ -91,22 +87,6 @@ impl Note {
                 }
             }
         }
-    }
-
-    /// Create a new note from a string representing that note, or None if 'note_str' is invalid
-    pub fn from(note_str: &str) -> Result<Self, Error> {
-        let note_str = Note::fix_case(note_str);
-        for note in Self::ALL {
-            match note {
-                Note::White(n) => {
-                    if n == note_str { return Ok(note) }
-                },
-                Note::Black((sharp, flat)) => {
-                    if note_str == sharp || note_str == flat { return Ok(note) }
-                }
-            }
-        }
-        Err(Error::InvalidNote)
     }
 
     /// This note's number relative from C (0-11)
@@ -126,6 +106,26 @@ impl Note {
             None => String::new(),
             Some(f) => f.to_uppercase().collect::<String>() + c.as_str(),
         }
+    }
+}
+
+impl TryFrom<&str> for Note {
+    type Error = Error;
+
+    /// Create a new note from a string representing that note, or None if 'note_str' is invalid
+    fn try_from(note_str: &str) -> Result<Self, Self::Error> {
+        let note_str = Note::fix_case(note_str);
+        for note in Self::ALL {
+            match note {
+                Note::White(n) => {
+                    if n == note_str { return Ok(note) }
+                },
+                Note::Black((sharp, flat)) => {
+                    if note_str == sharp || note_str == flat { return Ok(note) }
+                }
+            }
+        }
+        Err(Error::InvalidNote)
     }
 }
 
@@ -151,17 +151,11 @@ pub struct Scale {
 
 impl Scale {
     pub fn new(tonic: &str, intervals: &str) -> Result<Scale, Error> {
-        let root_res = Note::from(tonic);
-        let intervals_res = ScaleInterval::intervals_from_str(intervals);
-        match (root_res, intervals_res) {
-            (Ok(root), Ok(intervals)) => {
-                let modifier = Scale::determine_modifier(tonic);
-                let notes = Scale::create_note_arr(&root, &intervals);
-                Ok(Scale { modifier: modifier.clone(), notes: notes.to_owned() })
-            },
-            (Ok(_), Err(e)) => Err(e),
-            _ => Err(Error::InvalidNote),
-        }
+        let root = Note::try_from(tonic)?;
+        let intervals = ScaleInterval::intervals_from_str(intervals)?;
+        let modifier = Scale::determine_modifier(tonic);
+        let notes = Scale::create_note_arr(&root, &intervals);
+        Ok(Scale { modifier, notes })
     }
 
     /// Get the full octave chromatic scale starting from 'tonic'
@@ -183,11 +177,14 @@ impl Scale {
     }
 
     /// Given the root and a vec of intervals, create a corresponding vec of Note objects
-    fn create_note_arr(root: &Note, intervals: &Vec<ScaleInterval>) -> Vec<Note> {
-        let mut output: Vec<Note> = vec![(*root).clone()];
-        for interval in intervals {
-            output.push(Note::interval_from(&output.last().unwrap(), &interval))
-        }
-        output
+    fn create_note_arr(root: &Note, intervals: &[ScaleInterval]) -> Vec<Note> {
+        intervals.iter().fold(
+            (vec![*root], *root),
+            |(mut acc, note), interval| {
+                let new_note = Note::interval_from(&note, interval);
+                acc.push(new_note);
+                (acc, new_note)
+            }
+        ).0
     }
 }
