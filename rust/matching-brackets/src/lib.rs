@@ -8,12 +8,11 @@ enum BraceKind {
 impl BraceKind {
     //! Checks if another BraceKind is of the same kind
     fn matches(&self, other: &BraceKind) -> bool {
-        match (self, other) {
-            (BraceKind::Curly, BraceKind::Curly) => true,
-            (BraceKind::Parenthesis, BraceKind::Parenthesis) => true,
-            (BraceKind::Square, BraceKind::Square) => true,
-            _ => false,
-        }
+        matches!((self, other),
+            (BraceKind::Curly, BraceKind::Curly) |
+            (BraceKind::Parenthesis, BraceKind::Parenthesis) |
+            (BraceKind::Square, BraceKind::Square)
+        )
     }
 }
 
@@ -72,6 +71,6 @@ pub fn brackets_are_balanced(string: &str) -> bool {
             }
         };
     };
-    bracket_stack.len() == 0
+    bracket_stack.is_empty()
 }
 
