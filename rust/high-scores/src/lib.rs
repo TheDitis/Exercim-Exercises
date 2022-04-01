@@ -30,7 +30,7 @@ impl<'a> HighScores<'a> {
     pub fn personal_top_three(&self) -> Vec<u32> {
         let mut top_three: Vec<u32> = Vec::new();
         for val in self.scores {
-            if top_three.len() == 0 {
+            if top_three.is_empty() {
                 top_three.push(*val);
             }
             else if top_three.len() < 3 || val > top_three.last().unwrap() {
