@@ -25,12 +25,12 @@ impl Message {
             .filter(|c| c.is_alphabetic())
             .collect();
         // is_yelling only if there are letters and they are all capital
-        letters_only.len() != 0 && letters_only.chars().all(|c| c.is_ascii_uppercase())
+        !letters_only.is_empty() && letters_only.chars().all(|c| c.is_ascii_uppercase())
     }
 
     /// Determines whether the message is a Statement, a Question, or a BlankStare
     fn detect_message_kind(message: &str) -> MessageKind {
-        if message.len() == 0 {
+        if message.is_empty() {
             return BlankStare
         }
         if message.ends_with('?') {

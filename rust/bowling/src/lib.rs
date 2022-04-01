@@ -32,7 +32,7 @@ impl ScoreKind {
 
 #[derive(Debug)]
 pub struct BowlingGame {
-    cur_frame: (Some(u32), Some(u32)),
+    cur_frame: (Option<u32>, Option<u32>),
     roll_num: u8,
     status: GameStatus,
     pins: u16,
