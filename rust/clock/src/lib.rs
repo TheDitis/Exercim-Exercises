@@ -14,7 +14,7 @@ impl Clock {
 
     pub fn add_minutes(&self, minutes: i32) -> Self {
         let sum_minutes = self.minutes + minutes;
-        if sum_minutes < 0 || sum_minutes >= 60 {
+        if !(0..60).contains(&sum_minutes) {
             let (hours, minutes) = Clock::format_values(self.hours, sum_minutes);
             return Clock { hours, minutes }
         }
@@ -27,14 +27,14 @@ impl Clock {
         hours += overflow_minutes / 60;
         minutes -= overflow_minutes;
         // Ensure minutes are in range, adjusting hours if needed
-        minutes = minutes % 60;
+        minutes %= 60;
         if minutes < 0 {
-            minutes = 60 + minutes;
+            minutes += 60;
             hours -= 1;
         }
         // Ensure hours are in range
-        hours = hours % 24;
-        if hours < 0 { hours = 24 + hours }
+        hours %= 24;
+        if hours < 0 { hours += 24 }
 
         (hours, minutes)
     }
@@ -56,9 +56,9 @@ impl PartialEq for Clock {
 }
 
 
-fn pad_zero(string: &String) -> String {
+fn pad_zero(string: &str) -> String {
     if string.len() == 1 {
-        ("0".to_string() + string).to_owned()
+        "0".to_string() + string
     } else {
         string.to_owned()
     }

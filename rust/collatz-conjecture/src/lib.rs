@@ -6,7 +6,7 @@ pub fn collatz(n: u64) -> Option<u64> {
         i = i.checked_add(1)?;
         let rem = n % 2;
         if rem == 0 {
-            n = n / 2;
+            n /= 2;
         } else {
             n = n.checked_mul(3)?.checked_add(1)?;
         };
