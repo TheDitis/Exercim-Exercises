@@ -45,6 +45,45 @@
       <sourceFolder url="file://$MODULE_DIR$/rust/simple-linked-list/tests" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/rust/sublist/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/rust/sublist/tests" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/BitShiftTests/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/rust/allergies/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/rust/allergies/tests" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/rust/assembly-line/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/rust/assembly-line/tests" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/rust/bowling/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/rust/bowling/tests" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/rust/health-statistics/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/rust/health-statistics/tests" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/rust/lucians-luscious-lasagna/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/rust/lucians-luscious-lasagna/tests" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/rust/resistor-color/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/rust/resistor-color/tests" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/rust/semi-structured-logs/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/rust/semi-structured-logs/tests" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/BitAndTest/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/rust/anagram/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/rust/anagram/tests" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/rust/collatz-conjecture/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/rust/collatz-conjecture/tests" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/rust/low-power-embedded-game/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/rust/low-power-embedded-game/tests" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/rust/role-playing-game/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/rust/role-playing-game/tests" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/rust/scale-generator/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/rust/scale-generator/tests" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/rust/short-fibonacci/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/rust/short-fibonacci/tests" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/rust/space-age/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/rust/space-age/tests" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/rust/beer-song/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/rust/beer-song/tests" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/rust/magazine-cutout/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/rust/magazine-cutout/tests" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/rust/rpn-calculator/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/rust/rpn-calculator/tests" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/rust/sum-of-multiples/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/rust/sum-of-multiples/tests" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/rust/_clippy-all-exercises/src" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/temp" />
       <excludeFolder url="file://$MODULE_DIR$/.tmp" />
       <excludeFolder url="file://$MODULE_DIR$/tmp" />
@@ -69,6 +108,27 @@
       <excludeFolder url="file://$MODULE_DIR$/rust/parallel-letter-frequency/target" />
       <excludeFolder url="file://$MODULE_DIR$/rust/hamming/target" />
       <excludeFolder url="file://$MODULE_DIR$/rust/simple-linked-list/target" />
+      <excludeFolder url="file://$MODULE_DIR$/rust/lucians-luscious-lasagna/target" />
+      <excludeFolder url="file://$MODULE_DIR$/rust/semi-structured-logs/target" />
+      <excludeFolder url="file://$MODULE_DIR$/rust/resistor-color/target" />
+      <excludeFolder url="file://$MODULE_DIR$/rust/allergies/target" />
+      <excludeFolder url="file://$MODULE_DIR$/rust/assembly-line/target" />
+      <excludeFolder url="file://$MODULE_DIR$/rust/bowling/target" />
+      <excludeFolder url="file://$MODULE_DIR$/rust/health-statistics/target" />
+      <excludeFolder url="file://$MODULE_DIR$/BitShiftTests/target" />
+      <excludeFolder url="file://$MODULE_DIR$/BitAndTest/target" />
+      <excludeFolder url="file://$MODULE_DIR$/rust/collatz-conjecture/target" />
+      <excludeFolder url="file://$MODULE_DIR$/rust/short-fibonacci/target" />
+      <excludeFolder url="file://$MODULE_DIR$/rust/anagram/target" />
+      <excludeFolder url="file://$MODULE_DIR$/rust/space-age/target" />
+      <excludeFolder url="file://$MODULE_DIR$/rust/low-power-embedded-game/target" />
+      <excludeFolder url="file://$MODULE_DIR$/rust/role-playing-game/target" />
+      <excludeFolder url="file://$MODULE_DIR$/rust/scale-generator/target" />
+      <excludeFolder url="file://$MODULE_DIR$/rust/beer-song/target" />
+      <excludeFolder url="file://$MODULE_DIR$/rust/sum-of-multiples/target" />
+      <excludeFolder url="file://$MODULE_DIR$/rust/magazine-cutout/target" />
+      <excludeFolder url="file://$MODULE_DIR$/rust/rpn-calculator/target" />
+      <excludeFolder url="file://$MODULE_DIR$/rust/_clippy-all-exercises/target" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

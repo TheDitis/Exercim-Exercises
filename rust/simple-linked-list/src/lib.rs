@@ -2,6 +2,7 @@ use std::fmt::Display;
 use std::iter::FromIterator;
 use std::mem;
 
+#[derive(Default)]
 pub struct SimpleLinkedList<T: Clone + Display> {
     head: Option<Box<Node<T>>>,
 }
@@ -88,7 +89,7 @@ impl<T: Clone + Display> SimpleLinkedList<T> {
     }
 
     pub fn rev(self) -> SimpleLinkedList<T> {
-        let mut cur = self.head.clone();
+        let mut cur = self.head;
         let mut prev = None;
         // while cur is some, set cur.next to prev and advance both cur & prev
         while let Some(mut cur_node) = cur.take() {

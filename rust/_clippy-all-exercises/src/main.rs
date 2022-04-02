@@ -8,7 +8,7 @@ fn main() {
     let need_cleanup: Vec<String> = paths
         .map(parse_dir_path)
         .map(run_clippy)
-        .filter(|(_, clippy_results)| has_problems(&clippy_results))
+        .filter(|(_, clippy_results)| has_problems(clippy_results))
         .map(proj_name_only).collect();
 
     print_results(need_cleanup);
@@ -28,13 +28,13 @@ fn run_clippy(dir_path: String) -> (String, String) {
     (dir_path, String::from_utf8(stderr).unwrap())
 }
 
-fn has_problems(clippy_output: &String) -> bool {
+fn has_problems(clippy_output: &str) -> bool {
     clippy_output.lines().count() > 1
 }
 
 fn proj_name_only(name_n_results: (String, String)) -> String {
     let mut name = name_n_results.0;
-    let last_slash_ind = name.rfind("/").unwrap() + 1;
+    let last_slash_ind = name.rfind('/').unwrap() + 1;
     name = name[last_slash_ind..].to_owned();
     name
 }

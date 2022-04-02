@@ -23,7 +23,7 @@ fn is_sublist<T: PartialEq + Display>(list1: &[T], list2: &[T]) -> bool {
 }
 
 pub fn sublist_inds<T: PartialEq + Display>(list1: &[T], list2: &[T]) -> Option<(i32, i32)> {
-    if list1.len() == 0 { return  Some((0, 0)) }  // case: empty list1 is a sublist
+    if list1.is_empty() { return  Some((0, 0)) }  // case: empty list1 is a sublist
 
     for j in 0..list2.len() {
         if j + list1.len() > list2.len()  { break }
