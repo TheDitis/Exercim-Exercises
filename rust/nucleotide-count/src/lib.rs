@@ -18,10 +18,7 @@ pub fn nucleotide_counts(dna: &str) -> Result<HashMap<char, usize>, char> {
         return Err(bad)
     }
     for n in NUCLEOTIDES {
-        match count(n, dna) {
-            Ok(count) => { output.insert(n, count); },
-            Err(_) => { return Err(n); },
-        }
+        output.insert(n, count(n, dna).unwrap());
     }
     Ok(output)
 }
