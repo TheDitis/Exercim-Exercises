@@ -17,10 +17,7 @@ pub fn decode(source: &str) -> String {
     while i < source.len() {
         let num_str: String = source[i..].chars().take_while(|c| c.is_ascii_digit()).collect();
         let c = source.chars().nth(i + num_str.len()).unwrap();
-        let num: u32 = match num_str.parse() {
-            Ok(n) => n,
-            Err(_) => 1,
-        };
+        let num: u32 = num_str.parse().unwrap_or(1);
         output.push_str(make_run(c, num).as_str());
         i += num_str.len() + 1;
     }
