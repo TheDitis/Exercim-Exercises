@@ -1,0 +1,8 @@
+[package]
+edition = "2021"
+name = "robot-simulator"
+version = "2.2.0"
+
+[dependencies]
+strum = "0.24"
+strum_macros = "0.24"
