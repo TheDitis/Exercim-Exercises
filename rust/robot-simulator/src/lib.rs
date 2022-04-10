@@ -46,12 +46,10 @@ impl Robot {
         Robot { location: [x, y], facing: d }
     }
 
-    #[must_use]
     pub fn turn_right(&mut self) -> Self {
         self.turn(Turn::Right)
     }
 
-    #[must_use]
     pub fn turn_left(&mut self) -> Self {
         self.turn(Turn::Left)
     }
@@ -66,7 +64,6 @@ impl Robot {
         self.clone()
     }
 
-    #[must_use]
     pub fn advance(&mut self) -> Self {
         let (axis, movement) = match self.facing {
             Direction::North => (1, 1),
@@ -78,7 +75,6 @@ impl Robot {
         self.clone()
     }
 
-    #[must_use]
     pub fn instructions(&mut self, instructions: &str) -> Self {
         for c in instructions.chars() {
             match c {
