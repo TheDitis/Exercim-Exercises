@@ -9,17 +9,6 @@ pub enum Turn {
     Right,
 }
 
-impl TryFrom<char> for Turn {
-    type Error = String;
-    fn try_from(c: char) -> Result<Self, Self::Error> {
-        match c {
-            'L' => Ok(Turn::Left),
-            'R' => Ok(Turn::Right),
-            _ => Err("invalid turn char!".to_string())
-        }
-    }
-}
-
 ///-------------------------------------------------------------------------------------------------
 /// DIRECTION
 ///-------------------------------------------------------------------------------------------------
@@ -78,7 +67,8 @@ impl Robot {
     pub fn instructions(&mut self, instructions: &str) -> Self {
         for c in instructions.chars() {
             match c {
-                'L' | 'R' => { self.turn(Turn::try_from(c).unwrap()); },
+                'L' => { self.turn(Turn::Left); },
+                'R' => { self.turn(Turn::Right); },
                 'A' => { let _ = self.advance(); },
                 _ => (),
             }
