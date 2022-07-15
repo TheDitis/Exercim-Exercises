@@ -3,10 +3,12 @@ use std::{fs, io, thread};
 use std::fs::DirEntry;
 
 fn main() {
-    println!("checking projects...");
+    // get all directories in the Exercism folder
     let paths = fs::read_dir("../").unwrap();
     let mut handles = vec![];
+    println!("checking projects...");
 
+    // for each directory, spawn a new thread, run clippy in that dir & print the results if there are any
     for path in paths {
         let path = parse_dir_path(path);
         let handle = thread::spawn(move || {
