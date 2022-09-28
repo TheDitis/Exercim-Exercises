@@ -72,6 +72,10 @@ impl Grep {
         let mut output: Vec<String> = Vec::new();
         for (i, line) in file.lines().enumerate() {
             if self.is_match(line) {
+                let mut output_line = String::new();
+                if output_line.is_empty() && self.flags.file_names_only {
+                    output_line.push_str(format!())
+                }
                 if self.flags.file_names_only {
                     output.push(filename.to_string());
                     return Ok(output);
@@ -80,6 +84,12 @@ impl Grep {
                 } else {
                     output.push(format!("{}:{}", filename, line));
                 }
+                if self.flags.line_numbers {
+                    output_line.push_str(format!("{}:", i).as_str());
+                    println!("pushing line number")
+                }
+                output_line.push_str(line);
+                output.push(output_line);
             }
         }
         Ok(output)

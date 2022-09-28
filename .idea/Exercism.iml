@@ -120,8 +120,20 @@
       <sourceFolder url="file://$MODULE_DIR$/rust/paasio/tests" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/rust/phone-number/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/rust/phone-number/tests" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/rust/circular-buffer/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/rust/circular-buffer/tests" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/rust/etl/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/rust/etl/tests" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/rust/pascals-triangle/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/rust/pascals-triangle/tests" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/rust/protein-translation/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/rust/protein-translation/tests" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/rust/robot-name/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/rust/robot-name/tests" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/rust/affine-cipher/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/rust/affine-cipher/tests" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/rust/fizzy/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/rust/fizzy/tests" isTestSource="true" />
       <excludeFolder url="file://$MODULE_DIR$/temp" />
       <excludeFolder url="file://$MODULE_DIR$/.tmp" />
       <excludeFolder url="file://$MODULE_DIR$/tmp" />
@@ -186,6 +198,12 @@
       <excludeFolder url="file://$MODULE_DIR$/rust/paasio/target" />
       <excludeFolder url="file://$MODULE_DIR$/rust/phone-number/target" />
       <excludeFolder url="file://$MODULE_DIR$/rust/etl/target" />
+      <excludeFolder url="file://$MODULE_DIR$/rust/protein-translation/target" />
+      <excludeFolder url="file://$MODULE_DIR$/rust/robot-name/target" />
+      <excludeFolder url="file://$MODULE_DIR$/rust/pascals-triangle/target" />
+      <excludeFolder url="file://$MODULE_DIR$/rust/circular-buffer/target" />
+      <excludeFolder url="file://$MODULE_DIR$/rust/affine-cipher/target" />
+      <excludeFolder url="file://$MODULE_DIR$/rust/fizzy/target" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
