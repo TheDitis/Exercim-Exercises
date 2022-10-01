@@ -136,6 +136,10 @@
       <sourceFolder url="file://$MODULE_DIR$/rust/fizzy/tests" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/rust/atbash-cipher/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/rust/atbash-cipher/tests" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/rust/grade-school/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/rust/grade-school/tests" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/rust/minesweeper/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/rust/minesweeper/tests" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/rust/rectangles/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/rust/rectangles/tests" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/rust/rotational-cipher/src" isTestSource="false" />
@@ -216,6 +220,8 @@
       <excludeFolder url="file://$MODULE_DIR$/rust/rotational-cipher/target" />
       <excludeFolder url="file://$MODULE_DIR$/rust/rectangles/target" />
       <excludeFolder url="file://$MODULE_DIR$/rust/saddle-points/target" />
+      <excludeFolder url="file://$MODULE_DIR$/rust/grade-school/target" />
+      <excludeFolder url="file://$MODULE_DIR$/rust/minesweeper/target" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
