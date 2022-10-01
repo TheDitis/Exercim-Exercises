@@ -140,6 +140,8 @@
       <sourceFolder url="file://$MODULE_DIR$/rust/rectangles/tests" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/rust/rotational-cipher/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/rust/rotational-cipher/tests" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/rust/saddle-points/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/rust/saddle-points/tests" isTestSource="true" />
       <excludeFolder url="file://$MODULE_DIR$/temp" />
       <excludeFolder url="file://$MODULE_DIR$/.tmp" />
       <excludeFolder url="file://$MODULE_DIR$/tmp" />
@@ -213,6 +215,7 @@
       <excludeFolder url="file://$MODULE_DIR$/rust/atbash-cipher/target" />
       <excludeFolder url="file://$MODULE_DIR$/rust/rotational-cipher/target" />
       <excludeFolder url="file://$MODULE_DIR$/rust/rectangles/target" />
+      <excludeFolder url="file://$MODULE_DIR$/rust/saddle-points/target" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
