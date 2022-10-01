@@ -136,6 +136,8 @@
       <sourceFolder url="file://$MODULE_DIR$/rust/fizzy/tests" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/rust/atbash-cipher/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/rust/atbash-cipher/tests" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/rust/rectangles/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/rust/rectangles/tests" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/rust/rotational-cipher/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/rust/rotational-cipher/tests" isTestSource="true" />
       <excludeFolder url="file://$MODULE_DIR$/temp" />
@@ -210,6 +212,7 @@
       <excludeFolder url="file://$MODULE_DIR$/rust/fizzy/target" />
       <excludeFolder url="file://$MODULE_DIR$/rust/atbash-cipher/target" />
       <excludeFolder url="file://$MODULE_DIR$/rust/rotational-cipher/target" />
+      <excludeFolder url="file://$MODULE_DIR$/rust/rectangles/target" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
