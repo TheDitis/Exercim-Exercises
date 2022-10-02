@@ -148,6 +148,8 @@
       <sourceFolder url="file://$MODULE_DIR$/rust/rotational-cipher/tests" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/rust/saddle-points/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/rust/saddle-points/tests" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/rust/simple-cipher/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/rust/simple-cipher/tests" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/rust/tournament/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/rust/tournament/tests" isTestSource="true" />
       <excludeFolder url="file://$MODULE_DIR$/temp" />
@@ -228,6 +230,7 @@
       <excludeFolder url="file://$MODULE_DIR$/rust/minesweeper/target" />
       <excludeFolder url="file://$MODULE_DIR$/rust/queen-attack/target" />
       <excludeFolder url="file://$MODULE_DIR$/rust/tournament/target" />
+      <excludeFolder url="file://$MODULE_DIR$/rust/simple-cipher/target" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
