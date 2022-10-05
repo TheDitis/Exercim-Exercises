@@ -36,11 +36,11 @@ mod tests {
         process_encode_case("XOXOXOXOXOXOXOXOXO", 2, "XXXXXXXXXOOOOOOOOO");
     }
 
-    #[test]
-    fn dummy() {
-        let rail_fence = RailFence::new(6);
-        assert_eq!(rail_fence.encode("WEAREDISCOVEREDFLEEATONCE"), "hi");
-    }
+    // #[test]
+    // fn dummy() {
+    //     let rail_fence = RailFence::new(6);
+    //     assert_eq!(rail_fence.encode("WEAREDISCOVEREDFLEEATONCE"), "hi");
+    // }
 
     #[test]
     /// encode with three rails
@@ -55,6 +55,11 @@ mod tests {
     }
 
     // decode
+
+    // #[test]
+    // fn test_decode_with_6_rails() {
+    //     process_decode_case("WVTEOEAOACRENRSEECEIDLEDF", 6, "WEAREDISCOVEREDFLEEATONCE")
+    // }
 
     #[test]
     /// decode with three rails
