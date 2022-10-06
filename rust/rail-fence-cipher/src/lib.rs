@@ -32,7 +32,6 @@ impl RailFence {
             .take_while(|i| *i < cipher.len() + self.rails + (self.rails - 1) - 1).collect();
         // a map with centers as keys, and the ind of the next adjacent inds (below, above)
         let mut center_map: HashMap<usize, (usize, usize)> = HashMap::new();
-        eprintln!("centers = {:?}", centers);
 
         // for each rail, iterate through each center
         for rail_num in 0..self.rails {
