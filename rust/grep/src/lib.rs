@@ -32,7 +32,7 @@ impl Grep {
     pub fn new(pattern: &str, flags: &Flags, files: &[&str]) -> Self {
         Grep {
             pattern: pattern.to_string(),
-            flags: flags.clone(),
+            flags: *flags,
             files: files.iter().cloned().map(String::from).collect()
         }
     }
