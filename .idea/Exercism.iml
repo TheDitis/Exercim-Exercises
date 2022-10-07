@@ -154,6 +154,10 @@
       <sourceFolder url="file://$MODULE_DIR$/rust/simple-cipher/tests" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/rust/tournament/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/rust/tournament/tests" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/rust/roman-numerals/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/rust/roman-numerals/tests" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/rust/dot-dsl/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/rust/dot-dsl/tests" isTestSource="true" />
       <excludeFolder url="file://$MODULE_DIR$/temp" />
       <excludeFolder url="file://$MODULE_DIR$/.tmp" />
       <excludeFolder url="file://$MODULE_DIR$/tmp" />
@@ -234,6 +238,8 @@
       <excludeFolder url="file://$MODULE_DIR$/rust/tournament/target" />
       <excludeFolder url="file://$MODULE_DIR$/rust/simple-cipher/target" />
       <excludeFolder url="file://$MODULE_DIR$/rust/rail-fence-cipher/target" />
+      <excludeFolder url="file://$MODULE_DIR$/rust/roman-numerals/target" />
+      <excludeFolder url="file://$MODULE_DIR$/rust/dot-dsl/target" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

@@ -2,19 +2,7 @@ use anyhow::Error;
 use regex::Regex;
 use std::fs;
 
-/// While using `&[&str]` to handle flags is convenient for exercise purposes,
-/// and resembles the output of [`std::env::args`], in real-world projects it is
-/// both more convenient and more idiomatic to contain runtime configuration in
-/// a dedicated struct. Therefore, we suggest that you do so in this exercise.
-///
-/// In the real world, it's common to use crates such as [`clap`] or
-/// [`structopt`] to handle argument parsing, and of course doing so is
-/// permitted in this exercise as well, though it may be somewhat overkill.
-///
-/// [`clap`]: https://crates.io/crates/clap
-/// [`std::env::args`]: https://doc.rust-lang.org/std/env/fn.args.html
-/// [`structopt`]: https://crates.io/crates/structopt
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, Copy)]
 pub struct Flags {
     line_numbers: bool,        // -n
     file_names_only: bool,     // -l
@@ -22,7 +10,7 @@ pub struct Flags {
     invert_search: bool,       // -v
     match_whole_line: bool,    // -x
 }
-
+//
 impl Flags {
     pub fn new(flags: &[&str]) -> Self {
         Flags {
@@ -35,78 +23,58 @@ impl Flags {
     }
 }
 
-
 struct Grep {
-    pattern: Regex,
+    pattern: String,
     flags: Flags,
     files: Vec<String>,
 }
-
 impl Grep {
-    fn new(pattern: &str, flags: &Flags, files: &[&str]) -> Self {
-        let pattern_str = if flags.case_sensitive {
-            pattern.to_string()
-        } else {
-            pattern.to_lowercase()
-        };
+    pub fn new(pattern: &str, flags: &Flags, files: &[&str]) -> Self {
         Grep {
-            pattern: Regex::new(pattern_str.as_str()).unwrap(),
+            pattern: pattern.to_string(),
             flags: flags.clone(),
-            files: files.iter().map(|&s| s.to_string()).collect(),
+            files: files.iter().cloned().map(String::from).collect()
         }
     }
 
-    fn run(&mut self) -> Result<Vec<String>, Error> {
-        let mut output: Vec<String> = Vec::new();
-        for filename in &self.files {
-            let matches = self.file_matches(filename)?;
-            output.extend(matches);
-
-        }
-        println!("{:?}", output);
-        Ok(output)
-    }
-
-    fn file_matches(&self, filename: &String) -> Result<Vec<String>, Error> {
-        let file = String::from_utf8(fs::read(filename)?)?;
-        let mut output: Vec<String> = Vec::new();
-        for (i, line) in file.lines().enumerate() {
-            if self.is_match(line) {
-                let mut output_line = String::new();
-                if output_line.is_empty() && self.flags.file_names_only {
-                    output_line.push_str(format!())
+    pub fn run(&self) -> Result<Vec<String>, Error> {
+        let mut output = Vec::new();
+        let pattern = Regex::new(
+            format!("{}({})", if !self.flags.case_sensitive { "(?i)" } else { "" }, self.pattern).as_str()
+        )?;
+        for file_name in &self.files {
+            let content = String::from_utf8(fs::read(file_name)?)?;
+            for (line_num, line) in content.split('\n').enumerate() {
+                if !line.is_empty() && self.matches_line(line, &pattern) {
+                    let mut entry = vec![];
+                    if self.files.len() > 1 || self.flags.file_names_only {
+                        entry.push(file_name.clone());
+                    }
+                    if !self.flags.file_names_only {
+                        if self.flags.line_numbers { entry.push((line_num + 1).to_string()) };
+                        entry.push(line.to_string())
+                    };
+                    output.push(entry.join(":"));
+                    if self.flags.file_names_only { break }
                 }
-                if self.flags.file_names_only {
-                    output.push(filename.to_string());
-                    return Ok(output);
-                } else if self.flags.line_numbers {
-                    output.push(format!("{}:{}:{}", filename, i, line));
-                } else {
-                    output.push(format!("{}:{}", filename, line));
-                }
-                if self.flags.line_numbers {
-                    output_line.push_str(format!("{}:", i).as_str());
-                    println!("pushing line number")
-                }
-                output_line.push_str(line);
-                output.push(output_line);
             }
         }
         Ok(output)
     }
 
-    fn is_match(&self, line: &str) -> bool {
-        let line = if self.flags.case_sensitive { line.to_string() } else { line.to_lowercase() };
-        let matches = if self.flags.match_whole_line {
-            let line_match = self.pattern.find(line.as_str());
-            if line_match.is_some() {
-                println!("line_match: {}", line_match.unwrap().as_str());
-            }
-            line_match.is_some() && line_match.unwrap().as_str() == line
-        } else {
-            self.pattern.is_match(line.as_str())
-        };
-        if self.flags.invert_search { !matches } else { matches }
+    fn matches_line(&self, line: &str, pattern: &Regex) -> bool {
+        let match_line = if self.flags.match_whole_line { Grep::whole_line_matches } else { Grep::line_contains_match };  // -x
+        let match_ = match_line(line, pattern);
+        if self.flags.invert_search { !match_ } else { match_ }
+    }
+
+    fn line_contains_match(line: &str, pattern: &Regex) -> bool {
+        pattern.find(line).is_some()
+    }
+    fn whole_line_matches(line: &str, pattern: &Regex) -> bool {
+        if let Some(match_) = pattern.find(line.strip_suffix('\n').unwrap_or(line)) {
+            match_.start() == 0 && match_.end() == line.len()
+        } else { false }
     }
 }
 
