@@ -100,9 +100,7 @@ mod tests {
         let mut game = BowlingGame::new();
 
         let _ = game.roll(6);
-        // println!("score: {:?}", game.score());
         let _ = game.roll(4);
-        // println!("score: {:?}", game.score());
         let _ = game.roll(3);
 
         for _ in 0..17 {
@@ -123,8 +121,6 @@ mod tests {
         let _ = game.roll(4); // + 4
                                    // 4
 
-        game.print_frames();
-
         for _ in 0..15 {
             let _ = game.roll(0);
         }
@@ -142,8 +138,7 @@ mod tests {
 
         let _ = game.roll(5);
         let _ = game.roll(5);
-        let l = game.roll(7);
-        println!("_: {:?}", l);
+        let _ = game.roll(7);
 
         assert_eq!(game.score(), Some(17));
     }
