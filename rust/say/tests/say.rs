@@ -9,25 +9,13 @@ mod tests {
 
         #[test]
         fn one_million() {
-            assert_eq!(group_by_thousands(1_234_567), vec![vec!['1'], vec!['2', '3', '4'], vec!['5', '6', '7']])
+            assert_eq!(group_by_thousands(1_234_567), vec!["1", "234", "567"])
         }
     }
 
     mod encode_tests {
         #[test]
-        fn test_zero() {
-            assert_eq!(say::encode(0), String::from("zero"));
-        }
-
-//
-// If the below test is uncommented, it should not compile.
-//
-        /*
-        #[test]
-        fn test_negative() {
-            assert_eq!(say::encode(-1), String::from("won't compile"));
-        }
-        */
+        fn test_zero() { assert_eq!(say::encode(0), String::from("zero")); }
 
         #[test]
         fn test_one() {
