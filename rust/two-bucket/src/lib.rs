@@ -6,14 +6,6 @@ pub enum Bucket {
     One,
     Two,
 }
-// impl Bucket {
-//     fn other(&self) -> Self {
-//         match self {
-//             Self::One => Self::Two,
-//             Self::Two => Self::One,
-//         }
-//     }
-// }
 
 /// A struct to hold your results in.
 #[derive(PartialEq, Eq, Debug, Clone, Copy)]
@@ -34,69 +26,40 @@ pub fn solve(
     goal: u8,
     start_bucket: &Bucket,
 ) -> Option<BucketStats> {
-    eprintln!("start_bucket = {:?}", start_bucket);
-    let (mut smaller_, mut bigger_) = {
-        let mut bucket1 = WaterBucket::new(capacity_1, Bucket::One);
-        let mut bucket2 = WaterBucket::new(capacity_2, Bucket::Two);
-        if matches!(*start_bucket, Bucket::One) { bucket1.fill() } else { bucket2.fill() }
-        let mut sorted = [bucket1, bucket2];
-        sorted.sort_by(|a, b| a.capacity.cmp(&b.capacity)); // why does reversed work? idk
-        (*sorted.get(0).unwrap(), *sorted.get(1).unwrap())
-    };
-    let (smaller, bigger) = (&mut smaller_, &mut bigger_);
+    let mut b = (WaterBucket::new(capacity_1, Bucket::One), WaterBucket::new(capacity_2, Bucket::Two));
+    if matches!(*start_bucket, Bucket::One) { b.0.fill() } else { b.1.fill() }
     let mut results = Vec::new();
-    let mut start_state = (smaller.contains, bigger.contains);
+    let mut start_state = (b.0.contains, b.1.contains);
     for l in 0..2 {
-        eprintln!("\n\n\nl = {:?}", l);
         if l == 1 {
-            smaller.contains = start_state.1;
-            bigger.contains = start_state.0;
+            b.0.contains = start_state.1;
+            b.1.contains = start_state.0;
             mem::swap(&mut start_state.0, &mut start_state.1);
         }
         let mut i = 1;
-        while smaller.contains != goal && bigger.contains != goal {
-            eprintln!("\ni = {:?}", i);
-            eprintln!("smaller = {:?}", smaller);
-            eprintln!("bigger = {:?}", bigger);
-            if smaller.capacity == goal || bigger.capacity == goal {
-                if smaller.capacity == goal { smaller.fill() } else { bigger.fill() };
-                println!("HERE");
-            } else if smaller.is_full() {
-                println!("emptying smaller");
-                smaller.empty();
-            } else if bigger.is_empty() {
-                println!("filling bigger");
-                bigger.fill();
+        while b.0.contains != goal && b.1.contains != goal {
+            if b.0.capacity == goal || b.1.capacity == goal {
+                if b.0.capacity == goal { b.0.fill() } else { b.1.fill() };
+            } else if b.0.is_full() {
+                b.0.empty();
+            } else if b.1.is_empty() {
+                b.1.fill();
             } else {
-                bigger.pour_into(smaller);
+                b.1.pour_into(&mut b.0);
             }
-
             i += 1;
-            // End of loop check
-            if let Some(res) = end_loop_check(smaller, bigger, i, goal, start_state, start_bucket) {
-                println!("BREAKING");
-                if res.is_some() { results.push(res.unwrap()) }
+            if let Some(res) = end_loop_check(&b.0, &b.1, i, goal, start_state, *start_bucket) {
+                if let Some(v) = res { results.push(v) }
                 break;
             }
         }
 
-        eprintln!("results pre check = {:?}", results);
-        if i == 1 {
-            println!("HERE LINE 85");
-            if let Some(Some(v)) = end_loop_check(smaller, bigger, i, goal, start_state, start_bucket) {
-                results.push(v)
-            }
+        if let Some(Some(v)) = end_loop_check(&b.0, &b.1, i, goal, start_state, *start_bucket) {
+            results.push(v)
         }
-        eprintln!("results post check = {:?}", results);
-        mem::swap(smaller, bigger);
+        mem::swap(&mut b.0, &mut b.1);
     }
-    if results.is_empty() {
-        None
-    } else {
-        results.sort_by(|r1, r2| r1.moves.cmp(&r2.moves));
-        eprintln!("results = {:?}", results);
-        Some(results[0])
-    }
+    if !results.is_empty() { results.into_iter().min_by(|a, b| a.moves.cmp(&b.moves)) } else { None }
 }
 
 #[derive(Clone, Copy, Debug)]
@@ -110,52 +73,39 @@ impl WaterBucket {
     pub fn new(capacity: u8, bucket_num: Bucket) -> Self {
         WaterBucket { capacity, contains: 0, bucket_num }
     }
-
     pub fn pour_into(&mut self, target: &mut Self) {
         let rem_capacity = target.capacity - target.contains;
         let amount = min(rem_capacity, self.contains);
         self.contains -= amount;
-        eprintln!("pouring {:?} into smaller", amount);
         target.contains += amount;
     }
-
     fn fill(&mut self) { self.contains = self.capacity }
-
     fn empty(&mut self) { self.contains = 0 }
-
     fn is_empty(&self) -> bool { self.contains == 0 }
-
     fn is_full(&self) -> bool { self.contains == self.capacity }
 }
 
-
 fn end_loop_check(
-    smaller: &WaterBucket,
-    bigger: &WaterBucket,
+    b1: &WaterBucket,
+    b2: &WaterBucket,
     i: u8,
     goal: u8,
     start_state: (u8, u8),
-    start_bucket: &Bucket,
+    start_bucket: Bucket,
 ) -> Option<Option<BucketStats>> {
-    if smaller.contains == goal {
-        Some(Some(BucketStats {
-            moves: i,
-            goal_bucket: smaller.bucket_num,
-            other_bucket: bigger.contains,
-        }))
-    } else if bigger.contains == goal {
-        Some(Some(BucketStats {
-            moves: i,
-            goal_bucket: bigger.bucket_num,
-            other_bucket: smaller.contains,
-        }))
-    } else if (matches!(smaller.bucket_num, start_bucket) && bigger.is_full() && smaller.is_empty())
-        || (matches!(bigger.bucket_num, start_bucket) && smaller.is_full() && bigger.is_empty())
-        || start_state == (smaller.contains, bigger.contains) {
-        Some(None)
-    } else {
-        None
+    // if either one contains the goal amount, the result is a new BucketStats object
+    if b1.contains == goal || b2.contains == goal {
+        let (b1, b2) = if b1.contains == goal { (b1, b2) } else { (b2, b1) };
+        Some(Some(BucketStats { moves: i, goal_bucket: b1.bucket_num, other_bucket: b2.contains }))
     }
+    // if you've switched to the alternate starting point than the one given, result is None
+    else if (b1.bucket_num == start_bucket && b2.is_full() && b1.is_empty())
+        || (b2.bucket_num == start_bucket && b1.is_full() && b2.is_empty())
+        || start_state == (b1.contains, b2.contains) {
+        Some(None)
+    }
+    // No result in any other case
+    else { None }
 }
 
 
