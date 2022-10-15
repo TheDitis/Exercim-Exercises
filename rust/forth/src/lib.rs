@@ -1,4 +1,3 @@
-use std::collections::HashMap;
 
 ///-------------------------------------------------------------------------------------------------
 ///  Common
@@ -113,19 +112,29 @@ enum Token {
     Value(i32),
     Operation(Operation),
     StackOperation(StackOperation),
-    Variable(String),
+    Variable(usize),
     StoreVariable,
 }
 
-#[derive(Default)]
-pub struct Forth {
-    stack: Vec<Value>,
-    vars: HashMap<String, Vec<Token>>,
+///-------------------------------------------------------------------------------------------------
+///  Variable
+///-------------------------------------------------------------------------------------------------
+
+#[derive(Debug, Clone)]
+struct Variable {
+    name: String,
+    commands: Vec<Token>
 }
 
 ///-------------------------------------------------------------------------------------------------
 ///  Forth
 ///-------------------------------------------------------------------------------------------------
+
+#[derive(Default)]
+pub struct Forth {
+    stack: Vec<Value>,
+    vars:  Vec<Variable>,
+}
 
 impl Forth {
     pub fn new() -> Forth { Forth::default() }
@@ -140,10 +149,9 @@ impl Forth {
             match self.parse_token(input.first().unwrap(), &mut input)? {
                 Token::StoreVariable => (),  // if it's store-var command, we just want to store, not apply
                 t => self.apply_token(t)?,
-            }
+            };
             input.remove(0);
         }
-        eprintln!("self.vars = {:?}", self.vars);
         Ok(())
     }
 
@@ -152,19 +160,12 @@ impl Forth {
             let (_, var_name, values) = (input[0], input[1].to_string(), input[2..end_ind].to_vec());
             // make sure name is valid (it's not a number)
             if var_name.chars().all(|c| c.is_ascii_digit()) { return Err(Error::InvalidWord) }
-            // parse & store variable
+            // // parse & store variable
             let mut parsed_values: Vec<Token> = vec![];
             for &str_val in &values {
-                 let token = self.parse_token(str_val, &mut [].to_vec())?;
-                // if token is a variable, push the tokens the variable refers to
-                 if let Token::Variable(var_name) = token {
-                     self.vars.get(var_name.as_str()).unwrap().iter()
-                         .for_each(|v| {parsed_values.push(v.clone()); })
-                 }
-                 // otherwise push the token as-is
-                 else { parsed_values.push(token); }
+                parsed_values.push(self.parse_token(str_val, &mut [].to_vec())?);
             }
-            self.vars.insert(var_name.clone().to_ascii_lowercase(), parsed_values);
+            self.vars.push(Variable { name: var_name.clone().to_ascii_lowercase(), commands: parsed_values } );
             input.splice(0..(2 + values.len()), []);  // remove all related tokens from input
             Ok(var_name)
         } else { Err(Error::InvalidWord) }
@@ -176,8 +177,8 @@ impl Forth {
             Ok(Token::Value(n as i32))
         }
         // if it's a reference to a stored variable
-        else if self.vars.contains_key(next.to_ascii_lowercase().as_str()) {
-            Ok(Token::Variable(next.to_string().to_ascii_lowercase()))
+        else if let Ok(var_index) = self.find_var_index(next.to_string()) {
+            Ok(Token::Variable(var_index))
         }
         // if it's the start of an assignment statement
         else if next.len() == 1 && next.starts_with(':') {
@@ -199,9 +200,10 @@ impl Forth {
     fn apply_token(&mut self, token: Token) -> Result<(), Error> {
         match token {
             Token::Value(n) => self.stack.push( n),
-            Token::Variable(var_name) => {
-                let vals = self.vars.get(var_name.as_str()).unwrap().clone();
-                for t in vals { self.apply_token(t)? }
+            Token::Variable(var_index) => {
+                for t in self.vars.get(var_index).unwrap().clone().commands {
+                    self.apply_token(t.clone())?
+                }
             },
             Token::Operation(op) => {
                 if self.stack.len() < 2 { return Err(Error::StackUnderflow) }
@@ -216,5 +218,14 @@ impl Forth {
         }
         Ok(())
     }
-}
 
+    fn find_var_index(&self, var_name: String) -> Result<usize, Error> {
+        for (i, var) in self.vars.iter().enumerate().rev() {
+            if var.name.to_ascii_lowercase() == var_name.to_ascii_lowercase() {
+                return Ok(i)
+            }
+        }
+        Err(Error::UnknownWord)
+    }
+
+}

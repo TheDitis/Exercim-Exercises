@@ -158,8 +158,18 @@
       <sourceFolder url="file://$MODULE_DIR$/rust/roman-numerals/tests" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/rust/dot-dsl/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/rust/dot-dsl/tests" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/rust/poker/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/rust/poker/tests" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/rust/react/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/rust/react/tests" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/rust/wordy/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/rust/wordy/tests" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/rust/forth/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/rust/forth/tests" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/rust/spiral-matrix/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/rust/spiral-matrix/tests" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/rust/two-bucket/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/rust/two-bucket/tests" isTestSource="true" />
       <excludeFolder url="file://$MODULE_DIR$/temp" />
       <excludeFolder url="file://$MODULE_DIR$/.tmp" />
       <excludeFolder url="file://$MODULE_DIR$/tmp" />
@@ -243,6 +253,11 @@
       <excludeFolder url="file://$MODULE_DIR$/rust/roman-numerals/target" />
       <excludeFolder url="file://$MODULE_DIR$/rust/dot-dsl/target" />
       <excludeFolder url="file://$MODULE_DIR$/rust/react/target" />
+      <excludeFolder url="file://$MODULE_DIR$/rust/wordy/target" />
+      <excludeFolder url="file://$MODULE_DIR$/rust/poker/target" />
+      <excludeFolder url="file://$MODULE_DIR$/rust/two-bucket/target" />
+      <excludeFolder url="file://$MODULE_DIR$/rust/spiral-matrix/target" />
+      <excludeFolder url="file://$MODULE_DIR$/rust/forth/target" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

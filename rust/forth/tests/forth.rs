@@ -212,11 +212,8 @@ mod tests {
     fn can_consist_of_built_in_words() {
         let mut f = Forth::new();
         assert!(f.eval(": dup-twice dup dup ;").is_ok());
-        println!("\n\n\n");
         assert!(f.eval("1 dup-twice").is_ok());
-        println!("\n\n\n");
-        eprintln!("f.stack() = {:?}", f.stack());
-        // assert_eq!(vec![1, 1, 1], f.stack());
+        assert_eq!(vec![1, 1, 1], f.stack());
     }
 
     #[test]
@@ -264,8 +261,8 @@ mod tests {
     fn redefining_a_built_in_operator() {
         let mut f = Forth::new();
         assert!(f.eval(": + * ;").is_ok());
-        // assert!(f.eval("3 4 +").is_ok());
-        // assert_eq!(vec![12], f.stack());
+        assert!(f.eval("3 4 +").is_ok());
+        assert_eq!(vec![12], f.stack());
     }
 
     #[test]
