@@ -1,52 +1,3 @@
-// CONST Pattern matchers for each number
-const ZERO: &str = " _ | ||_|";
-//  _
-// | |
-// |_|";
-
-const ONE: &str = "     |  |";
-//  |
-//  |";
-
-const TWO: &str = " _  _||_ ";
-//  _
-//  _|
-// |_ ";
-
-const THREE: &str = " _  _| _|";
-// _
-// _|
-// _|";
-
-const FOUR: &str = "   |_|  |";
-// |_|
-//   |";
-
-const FIVE: &str = " _ |_  _|";
-//  _
-// |_
-//  _|";
-
-const SIX: &str = " _ |_ |_|";
-//  _
-// |_
-// |_|";
-
-const SEVEN: &str = " _   |  |";
- // _
- //  |
- //  |";
-
-const EIGHT: &str = " _ |_||_|";
-//  _
-// |_|
-// |_|";
-
-const NINE: &str = " _ |_| _|";
-//  _
-// |_|
-//  _|";
-
 use std::fmt::{Debug};
 
 #[derive(Debug, PartialEq, Eq)]
@@ -81,16 +32,16 @@ fn group(input: &str) -> Vec<Vec<String>> {
 
 fn convert_number(num_str: &str) -> char {
     match num_str {
-        ZERO => '0',
-        ONE => '1',
-        TWO => '2',
-        THREE => '3',
-        FOUR => '4',
-        FIVE => '5',
-        SIX => '6',
-        SEVEN => '7',
-        EIGHT => '8',
-        NINE => '9',
+        " _ | ||_|" => '0',
+        "     |  |" => '1',
+        " _  _||_ " => '2',
+        " _  _| _|" => '3',
+        "   |_|  |" => '4',
+        " _ |_  _|" => '5',
+        " _ |_ |_|" => '6',
+        " _   |  |" => '7',
+        " _ |_||_|" => '8',
+        " _ |_| _|" => '9',
         _ => '?'
     }
 }
