@@ -165,7 +165,7 @@ impl Forth {
             for &str_val in &values {
                 parsed_values.push(self.parse_token(str_val, &mut [].to_vec())?);
             }
-            self.vars.push(Variable { name: var_name.clone().to_ascii_lowercase(), commands: parsed_values } );
+            self.vars.push(Variable { name: var_name.to_ascii_lowercase(), commands: parsed_values } );
             input.splice(0..(2 + values.len()), []);  // remove all related tokens from input
             Ok(var_name)
         } else { Err(Error::InvalidWord) }

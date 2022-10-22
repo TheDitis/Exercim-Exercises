@@ -2,7 +2,7 @@
 pub fn number(user_number: &str) -> Option<String> {
     // Remove all non-digit characters
     let mut filtered: String = user_number.chars()
-        .filter(|c| c.is_digit(10))
+        .filter(|c| c.is_ascii_digit())
         .collect();
     // Remove the country code if present
     if filtered.len() > 10 && filtered.chars().next()? == '1' {

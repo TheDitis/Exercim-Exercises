@@ -11,5 +11,5 @@ pub fn sum_of_squares(n: u32) -> u32 {
 }
 
 pub fn difference(n: u32) -> u32 {
-    (sum_of_squares(n) as i32 - square_of_sum(n) as i32).abs() as u32
+    (sum_of_squares(n) as i32 - square_of_sum(n) as i32).unsigned_abs()
 }

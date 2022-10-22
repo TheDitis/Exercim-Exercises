@@ -31,7 +31,7 @@ impl PascalsTriangle {
     }
 
     fn new_row(prev_row: &Vec<u32>) -> Vec<u32> {
-        if prev_row.len() == 0 { return vec![1] }
+        if prev_row.is_empty() { return vec![1] }
         let mut output = vec![];
         for i in 0..prev_row.len()+1 {
             output.push(

@@ -1,5 +1,5 @@
 
-#[derive(Debug, PartialEq)]
+#[derive(Debug, PartialEq, Eq)]
 pub struct CustomSet<T: PartialEq + PartialOrd + Copy> {
     items: Vec<T>,
 }

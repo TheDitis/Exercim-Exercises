@@ -50,7 +50,7 @@ impl<T: Clone + Debug> CircularBuffer<T> {
 
     pub fn read(&mut self) -> Result<T, Error> {
         if self.is_empty { return Err(Error::EmptyBuffer) }
-        let result = match &self.buffer[self.first] {
+        match &self.buffer[self.first] {
             Some(val) => {
                 let result = val.clone();
                 self.buffer[self.first] = None;
@@ -61,8 +61,7 @@ impl<T: Clone + Debug> CircularBuffer<T> {
             None => {
                 Err(Error::EmptyBuffer)
             }
-        };
-        result
+        }
     }
 
     pub fn clear(&mut self) {
@@ -73,7 +72,7 @@ impl<T: Clone + Debug> CircularBuffer<T> {
 
     pub fn overwrite(&mut self, val: T) {
         if !self.is_full {
-            self.write(val);
+            self.write(val).expect("write to self failed");
             return
         }
         self.buffer[self.first] = Some(val);

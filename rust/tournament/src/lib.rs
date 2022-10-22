@@ -115,8 +115,8 @@ struct Team {
 }
 
 impl Team {
-    pub fn new(name: &String) -> Self {
-        Team { name: name.clone(), ..Team::default() }
+    pub fn new(name: &str) -> Self {
+        Team { name: name.to_string(), ..Team::default() }
     }
 
     pub fn add_game(&mut self, game: Game) {

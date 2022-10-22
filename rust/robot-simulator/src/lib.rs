@@ -12,7 +12,7 @@ pub enum Turn {
 ///-------------------------------------------------------------------------------------------------
 /// DIRECTION
 ///-------------------------------------------------------------------------------------------------
-#[derive(PartialEq, Debug, Clone, EnumIter)]
+#[derive(PartialEq, Eq, Debug, Clone, EnumIter)]
 pub enum Direction {
     North,
     East,

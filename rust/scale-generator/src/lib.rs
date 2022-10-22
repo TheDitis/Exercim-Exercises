@@ -47,7 +47,7 @@ pub enum ScaleModifier {
 ///-------------------------------------------------------------------------------------------------
 ///  Note
 ///-------------------------------------------------------------------------------------------------
-#[derive(PartialEq, Clone, Copy, Debug)]
+#[derive(PartialEq, Eq, Clone, Copy, Debug)]
 pub enum Note {
     White(&'static str),
     Black((&'static str, &'static str)),
@@ -140,7 +140,7 @@ impl FromStr for Note {
 ///  Error
 ///-------------------------------------------------------------------------------------------------
 
-#[derive(Debug, PartialEq)]
+#[derive(Debug, PartialEq, Eq)]
 pub enum Error {
     InvalidNote,
     InvalidInterval,

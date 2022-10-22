@@ -6,7 +6,7 @@ fn main() {
     // get all directories in the Exercism folder
     let paths = fs::read_dir("../").unwrap();
     let mut handles = vec![];
-    println!("checking projects...");
+    println!("checking projects...\n");
 
     // for each directory, spawn a new thread, run clippy in that dir & print the results if there are any
     for path in paths {
@@ -14,7 +14,7 @@ fn main() {
         let handle = thread::spawn(move || {
             let clippy_res = run_clippy(&path);
             if has_problems(clippy_res.as_str()) {
-                println!("{}\n{} has problems\n\n\n", clippy_res, &path);
+                println!("{} has problems", &path);
             }
         });
         handles.push(handle);
@@ -23,6 +23,7 @@ fn main() {
     for handle in handles {
         handle.join().unwrap();
     }
+    println!("\nDone checking projects")
 }
 
 fn parse_dir_path(dir_entry: io::Result<DirEntry>) -> String {

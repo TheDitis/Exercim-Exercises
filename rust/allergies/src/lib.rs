@@ -4,7 +4,7 @@ pub struct Allergies {
     score: u32,
 }
 
-#[derive(Debug, PartialEq, Clone, Copy)]
+#[derive(Debug, PartialEq, Eq, Clone, Copy)]
 pub enum Allergen {
     Eggs = 1,
     Peanuts = 2,

@@ -12,7 +12,7 @@ impl School {
     pub fn add(&mut self, grade: u32, student: &str) {
         let entry = self.roster.entry(grade).or_insert(vec![]);
         let insert_pos = entry.iter()
-            .position(|name| { student.cmp(&name) == Ordering::Less })
+            .position(|name| { student.cmp(name) == Ordering::Less })
             .unwrap_or(entry.len());
         entry.insert(insert_pos, student.to_string());
     }
