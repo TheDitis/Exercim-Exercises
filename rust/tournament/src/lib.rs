@@ -1,4 +1,5 @@
 use std::collections::HashMap;
+use std::fmt::{Display, Formatter};
 use crate::GameResult::{Draw, Loss, Win};
 
 pub fn tally(match_results: &str) -> String {
@@ -111,7 +112,6 @@ struct Team {
     losses: u32,
     draws: u32,
     points: u32,
-    games: Vec<Game>,
 }
 
 impl Team {
@@ -128,14 +128,17 @@ impl Team {
         };
         self.points += result as u32;
         self.matches_played += 1;
-        self.games.push(game);
     }
 }
 
-impl ToString for Team {
-    fn to_string(&self) -> String {
-        format!("\n{: <31}", self.name)
-            + [self.matches_played, self.wins, self.draws, self.losses, self.points]
+impl Display for Team {
+    fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
+        write!(
+            f,
+            "\n{: <31}{}",
+            self.name,
+            [self.matches_played, self.wins, self.draws, self.losses, self.points]
                 .map(|v| { format!("|{: >3}", v) }).join(" ").as_str()
+        )
     }
 }
