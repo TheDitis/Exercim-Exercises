@@ -170,6 +170,20 @@
       <sourceFolder url="file://$MODULE_DIR$/rust/spiral-matrix/tests" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/rust/two-bucket/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/rust/two-bucket/tests" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/rust/all-your-base/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/rust/all-your-base/tests" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/rust/alphametics/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/rust/alphametics/tests" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/rust/palindrome-products/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/rust/palindrome-products/tests" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/rust/diamond/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/rust/diamond/tests" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/rust/ocr-numbers/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/rust/ocr-numbers/tests" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/rust/sieve/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/rust/sieve/tests" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/rust/variable-length-quantity/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/rust/variable-length-quantity/tests" isTestSource="true" />
       <excludeFolder url="file://$MODULE_DIR$/temp" />
       <excludeFolder url="file://$MODULE_DIR$/.tmp" />
       <excludeFolder url="file://$MODULE_DIR$/tmp" />
@@ -258,6 +272,13 @@
       <excludeFolder url="file://$MODULE_DIR$/rust/two-bucket/target" />
       <excludeFolder url="file://$MODULE_DIR$/rust/spiral-matrix/target" />
       <excludeFolder url="file://$MODULE_DIR$/rust/forth/target" />
+      <excludeFolder url="file://$MODULE_DIR$/rust/all-your-base/target" />
+      <excludeFolder url="file://$MODULE_DIR$/rust/palindrome-products/target" />
+      <excludeFolder url="file://$MODULE_DIR$/rust/alphametics/target" />
+      <excludeFolder url="file://$MODULE_DIR$/rust/sieve/target" />
+      <excludeFolder url="file://$MODULE_DIR$/rust/variable-length-quantity/target" />
+      <excludeFolder url="file://$MODULE_DIR$/rust/diamond/target" />
+      <excludeFolder url="file://$MODULE_DIR$/rust/ocr-numbers/target" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
